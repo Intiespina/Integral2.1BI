@@ -81,10 +81,10 @@ st.markdown("""
 def cargar_pipeline():
     """Carga y devuelve el modelo, scaler, imputer y lista de features desde disco."""
     base = os.path.dirname(os.path.abspath(__file__))
-    modelo     = joblib.load(os.path.join(base, "modelo.pkl"))
-    scaler     = joblib.load(os.path.join(base, "scaler.pkl"))
-    imputer    = joblib.load(os.path.join(base, "imputer.pkl"))
-    top_feats  = joblib.load(os.path.join(base, "top_features.pkl"))
+    modelo     = joblib.load(os.path.join(base, "modelo.joblib"))
+    scaler     = joblib.load(os.path.join(base, "scaler.joblib"))
+    imputer    = joblib.load(os.path.join(base, "imputer.joblib"))
+    top_feats  = joblib.load(os.path.join(base, "top_features.joblib"))
     return modelo, scaler, imputer, top_feats
 
 
@@ -284,8 +284,8 @@ try:
     modelo, scaler, imputer, top_features = cargar_pipeline()
 except FileNotFoundError:
     st.error(
-        "No se encontraron los archivos del modelo (`modelo.pkl`, `scaler.pkl`, "
-        "`imputer.pkl`, `top_features.pkl`). "
+        "No se encontraron los archivos del modelo (`modelo.joblib`, `scaler.joblib`, "
+        "`imputer.joblib`, `top_features.joblib`). "
         "Asegúrate de que estén en el mismo directorio que `app.py` y que el notebook "
         "haya sido ejecutado completamente."
     )
